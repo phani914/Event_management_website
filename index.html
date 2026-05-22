@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventHub | Event Management</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="EventHub homepage">
+        <span class="brand-mark">EH</span>
+        <span class="brand-text">
+          <strong>EventHub</strong>
+          <small>Summits & Events</small>
+        </span>
+      </a>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-icon sun">&#9728;</span>
+          <span class="theme-icon moon">&#9790;</span>
+          <span class="theme-thumb"></span>
+        </button>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#events">Events</a></li>
+        <li><a href="#countdown">Countdown</a></li>
+        <li><a href="#tickets">Tickets</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a class="account-link" href="account.html">Login / Create Account</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Live conference experience</p>
+        <h1>Global Tech Summit 2026</h1>
+        <p class="hero-copy">Join founders, engineers, designers, and event leaders for two days of talks, workshops, networking, and product showcases.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#tickets">Book Tickets</a>
+          <a class="btn secondary" href="#events">View Events</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Event Listings</p>
+        <h2>Featured schedule</h2>
+      </div>
+      <div class="event-grid">
+        <article class="event-card">
+          <div class="event-date">
+            <span>12</span>
+            <small>Jun</small>
+          </div>
+          <div>
+            <h3>AI Product Strategy</h3>
+            <p>Practical sessions on building useful AI tools, safer workflows, and product teams that move quickly.</p>
+            <span class="event-meta">10:00 AM &middot; Main Hall</span>
+          </div>
+        </article>
+        <article class="event-card">
+          <div class="event-date">
+            <span>13</span>
+            <small>Jun</small>
+          </div>
+          <div>
+            <h3>Design Systems Lab</h3>
+            <p>A hands-on workshop for creating consistent, accessible, and reusable interface patterns.</p>
+            <span class="event-meta">1:30 PM &middot; Studio B</span>
+          </div>
+        </article>
+        <article class="event-card">
+          <div class="event-date">
+            <span>14</span>
+            <small>Jun</small>
+          </div>
+          <div>
+            <h3>Startup Pitch Night</h3>
+            <p>Emerging companies present new products to investors, mentors, and technology partners.</p>
+            <span class="event-meta">6:00 PM &middot; Innovation Stage</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="countdown" class="countdown-section">
+      <div>
+        <p class="eyebrow">Countdown Timer</p>
+        <h2>Next event starts soon</h2>
+      </div>
+      <div class="countdown" data-event-date="2026-06-12T10:00:00">
+        <div><span id="days">00</span><small>Days</small></div>
+        <div><span id="hours">00</span><small>Hours</small></div>
+        <div><span id="minutes">00</span><small>Minutes</small></div>
+        <div><span id="seconds">00</span><small>Seconds</small></div>
+      </div>
+    </section>
+
+    <section id="tickets" class="section ticket-section">
+      <div class="section-heading">
+        <p class="eyebrow">Ticket Booking UI</p>
+        <h2>Choose your pass</h2>
+      </div>
+      <div class="ticket-grid">
+        <article class="ticket-card">
+          <h3>Starter</h3>
+          <p class="price">$49</p>
+          <p>Single-day access with keynote sessions and expo entry.</p>
+          <button type="button">Select Starter</button>
+        </article>
+        <article class="ticket-card featured">
+          <span class="badge">Popular</span>
+          <h3>Professional</h3>
+          <p class="price">$129</p>
+          <p>Full access to all talks, workshops, networking lounge, and event recordings.</p>
+          <button type="button">Select Professional</button>
+        </article>
+        <article class="ticket-card">
+          <h3>VIP</h3>
+          <p class="price">$249</p>
+          <p>Premium seating, private speaker dinner, backstage tour, and priority support.</p>
+          <button type="button">Select VIP</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="speakers" class="section speakers-section">
+      <div class="section-heading">
+        <p class="eyebrow">Speakers Section</p>
+        <h2>Meet the speakers</h2>
+      </div>
+      <div class="speaker-grid">
+        <article class="speaker-card">
+          <div class="speaker-photo speaker-one"></div>
+          <h3>Maya Chen</h3>
+          <p>AI Product Lead</p>
+        </article>
+        <article class="speaker-card">
+          <div class="speaker-photo speaker-two"></div>
+          <h3>Arjun Mehta</h3>
+          <p>Founder, ScaleWorks</p>
+        </article>
+        <article class="speaker-card">
+          <div class="speaker-photo speaker-three"></div>
+          <h3>Sofia Rivera</h3>
+          <p>Design Systems Director</p>
+        </article>
+        <article class="speaker-card">
+          <div class="speaker-photo speaker-four"></div>
+          <h3>Noah Brooks</h3>
+          <p>Cloud Architect</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="brand footer-logo" href="index.html" aria-label="EventHub homepage">
+          <span class="brand-mark">EH</span>
+          <span class="brand-text">
+            <strong>EventHub</strong>
+            <small>Summits & Events</small>
+          </span>
+        </a>
+        <p>Plan, promote, and book memorable conferences, workshops, and live experiences from one elegant event platform.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <a href="#events">Event Listings</a>
+        <a href="#tickets">Ticket Booking</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#countdown">Countdown</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <p>hello@eventhub.com</p>
+        <p>+1 555 018 2046</p>
+        <p>San Francisco, CA</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Follow</h3>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">X / Twitter</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 EventHub. All rights reserved.</p>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

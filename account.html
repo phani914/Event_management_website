@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Create Account | EventHub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="EventHub homepage">
+        <span class="brand-mark">EH</span>
+        <span class="brand-text">
+          <strong>EventHub</strong>
+          <small>Summits & Events</small>
+        </span>
+      </a>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-icon sun">&#9728;</span>
+          <span class="theme-icon moon">&#9790;</span>
+          <span class="theme-thumb"></span>
+        </button>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#events">Events</a></li>
+        <li><a href="index.html#tickets">Tickets</a></li>
+        <li><a href="index.html#speakers">Speakers</a></li>
+        <li><a class="account-link" href="account.html">Login / Create Account</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="account-page">
+    <section class="account-hero">
+      <div>
+        <p class="eyebrow">Member Access</p>
+        <h1>Login or create your EventHub account</h1>
+        <p class="hero-copy">Manage bookings, save favorite sessions, and get updates for upcoming events.</p>
+      </div>
+    </section>
+
+    <section class="account-panel" aria-label="Account forms">
+      <article class="auth-card">
+        <div class="auth-heading">
+          <p class="eyebrow">Welcome Back</p>
+          <h2>Login</h2>
+        </div>
+        <form>
+          <label for="login-email">Email address</label>
+          <input id="login-email" type="email" placeholder="you@example.com" required>
+
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" placeholder="Enter your password" required>
+
+          <div class="form-row">
+            <label class="check-option">
+              <input type="checkbox">
+              Remember me
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+      </article>
+
+      <article class="auth-card auth-card-featured">
+        <div class="auth-heading">
+          <p class="eyebrow">New Here</p>
+          <h2>Create Account</h2>
+        </div>
+        <form>
+          <label for="signup-name">Full name</label>
+          <input id="signup-name" type="text" placeholder="Your full name" required>
+
+          <label for="signup-email">Email address</label>
+          <input id="signup-email" type="email" placeholder="you@example.com" required>
+
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password" placeholder="Create a password" required>
+
+          <label class="check-option terms-option">
+            <input type="checkbox" required>
+            I agree to the event updates and account terms.
+          </label>
+
+          <button type="submit">Create Account</button>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 EventHub. All rights reserved.</p>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
