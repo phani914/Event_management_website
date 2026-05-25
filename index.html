@@ -93,16 +93,20 @@
       </div>
     </section>
 
-    <section id="countdown" class="countdown-section">
-      <div>
+    <section id="countdown" class="countdown-section" aria-labelledby="countdown-title">
+      <div class="countdown-copy">
         <p class="eyebrow">Countdown Timer</p>
-        <h2>Next event starts soon</h2>
+        <h2 id="countdown-title">Global Tech Summit begins in</h2>
+        <p class="countdown-detail">June 12, 2026 at 10:00 AM</p>
       </div>
-      <div class="countdown" data-event-date="2026-06-12T10:00:00">
-        <div><span id="days">00</span><small>Days</small></div>
-        <div><span id="hours">00</span><small>Hours</small></div>
-        <div><span id="minutes">00</span><small>Minutes</small></div>
-        <div><span id="seconds">00</span><small>Seconds</small></div>
+      <div class="countdown-panel">
+        <div class="countdown-status" id="countdown-status">Seats are filling fast</div>
+        <div class="countdown" data-event-date="2026-06-12T10:00:00" aria-live="polite">
+          <div class="time-card"><span id="days">00</span><small>Days</small></div>
+          <div class="time-card"><span id="hours">00</span><small>Hours</small></div>
+          <div class="time-card"><span id="minutes">00</span><small>Minutes</small></div>
+          <div class="time-card"><span id="seconds">00</span><small>Seconds</small></div>
+        </div>
       </div>
     </section>
 
@@ -110,27 +114,96 @@
       <div class="section-heading">
         <p class="eyebrow">Ticket Booking UI</p>
         <h2>Choose your pass</h2>
+        <p class="section-copy">Pick the access level that fits your summit plans. All passes include check-in support and digital ticket delivery.</p>
       </div>
       <div class="ticket-grid">
         <article class="ticket-card">
+          <div class="ticket-topline">
+            <span class="ticket-type">1 Day</span>
+            <span class="ticket-status">Available</span>
+          </div>
           <h3>Starter</h3>
-          <p class="price">$49</p>
-          <p>Single-day access with keynote sessions and expo entry.</p>
+          <p class="price">$49<span>/person</span></p>
+          <p class="ticket-summary">Single-day access for attendees who want the main stage and expo experience.</p>
+          <dl class="ticket-details">
+            <div>
+              <dt>Valid for</dt>
+              <dd>Any 1 summit day</dd>
+            </div>
+            <div>
+              <dt>Seats left</dt>
+              <dd>84</dd>
+            </div>
+          </dl>
+          <ul class="ticket-features">
+            <li>Keynote sessions</li>
+            <li>Expo floor access</li>
+            <li>Digital event guide</li>
+            <li>Email ticket confirmation</li>
+          </ul>
+          <p class="ticket-note">Best for first-time visitors and expo-focused attendees.</p>
           <button type="button">Select Starter</button>
         </article>
         <article class="ticket-card featured">
           <span class="badge">Popular</span>
+          <div class="ticket-topline">
+            <span class="ticket-type">Full Event</span>
+            <span class="ticket-status">Best Value</span>
+          </div>
           <h3>Professional</h3>
-          <p class="price">$129</p>
-          <p>Full access to all talks, workshops, networking lounge, and event recordings.</p>
+          <p class="price">$129<span>/person</span></p>
+          <p class="ticket-summary">Complete access for builders, teams, and product leaders attending both days.</p>
+          <dl class="ticket-details">
+            <div>
+              <dt>Valid for</dt>
+              <dd>All 3 days</dd>
+            </div>
+            <div>
+              <dt>Seats left</dt>
+              <dd>42</dd>
+            </div>
+          </dl>
+          <ul class="ticket-features">
+            <li>All talks and workshops</li>
+            <li>Networking lounge</li>
+            <li>Session recordings</li>
+            <li>Lunch and coffee included</li>
+          </ul>
+          <p class="ticket-note">Recommended for full summit access and workshop participation.</p>
           <button type="button">Select Professional</button>
         </article>
         <article class="ticket-card">
+          <div class="ticket-topline">
+            <span class="ticket-type">Premium</span>
+            <span class="ticket-status">Limited</span>
+          </div>
           <h3>VIP</h3>
-          <p class="price">$249</p>
-          <p>Premium seating, private speaker dinner, backstage tour, and priority support.</p>
+          <p class="price">$249<span>/person</span></p>
+          <p class="ticket-summary">High-touch access with premium seating, private events, and priority support.</p>
+          <dl class="ticket-details">
+            <div>
+              <dt>Valid for</dt>
+              <dd>All 3 days</dd>
+            </div>
+            <div>
+              <dt>Seats left</dt>
+              <dd>16</dd>
+            </div>
+          </dl>
+          <ul class="ticket-features">
+            <li>Reserved front seating</li>
+            <li>Speaker dinner invite</li>
+            <li>Priority check-in desk</li>
+            <li>VIP lounge and concierge</li>
+          </ul>
+          <p class="ticket-note">Designed for executives, sponsors, and premium networking.</p>
           <button type="button">Select VIP</button>
         </article>
+      </div>
+      <div class="ticket-info-bar">
+        <span>Secure checkout</span>
+        <span>Transferable until 48 hours before the event</span>
+        <span>Group invoices available for 5+ tickets</span>
       </div>
     </section>
 
