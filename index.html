@@ -143,7 +143,7 @@
             <li>Email ticket confirmation</li>
           </ul>
           <p class="ticket-note">Best for first-time visitors and expo-focused attendees.</p>
-          <button type="button">Select Starter</button>
+          <button type="button" data-ticket-plan="Starter" data-ticket-price="49">Checkout Starter</button>
         </article>
         <article class="ticket-card featured">
           <span class="badge">Popular</span>
@@ -171,7 +171,7 @@
             <li>Lunch and coffee included</li>
           </ul>
           <p class="ticket-note">Recommended for full summit access and workshop participation.</p>
-          <button type="button">Select Professional</button>
+          <button type="button" data-ticket-plan="Professional" data-ticket-price="129">Checkout Professional</button>
         </article>
         <article class="ticket-card">
           <div class="ticket-topline">
@@ -198,13 +198,86 @@
             <li>VIP lounge and concierge</li>
           </ul>
           <p class="ticket-note">Designed for executives, sponsors, and premium networking.</p>
-          <button type="button">Select VIP</button>
+          <button type="button" data-ticket-plan="VIP" data-ticket-price="249">Checkout VIP</button>
         </article>
       </div>
       <div class="ticket-info-bar">
         <span>Secure checkout</span>
         <span>Transferable until 48 hours before the event</span>
         <span>Group invoices available for 5+ tickets</span>
+      </div>
+    </section>
+
+    <section id="checkout" class="section checkout-section" aria-labelledby="checkout-title">
+      <div class="section-heading">
+        <p class="eyebrow">Checkout</p>
+        <h2 id="checkout-title">Complete your booking</h2>
+        <p class="section-copy">Review your selected pass, add attendee details, and confirm your ticket request.</p>
+      </div>
+
+      <div class="checkout-layout">
+        <article class="checkout-summary">
+          <p class="eyebrow">Selected Pass</p>
+          <h3 id="checkout-plan">Choose a ticket to begin</h3>
+          <dl class="checkout-totals">
+            <div>
+              <dt>Ticket price</dt>
+              <dd id="checkout-price">$0</dd>
+            </div>
+            <div>
+              <dt>Quantity</dt>
+              <dd id="checkout-quantity-label">1</dd>
+            </div>
+            <div>
+              <dt>Service fee</dt>
+              <dd id="checkout-fee">$0</dd>
+            </div>
+            <div class="checkout-total-row">
+              <dt>Total</dt>
+              <dd id="checkout-total">$0</dd>
+            </div>
+          </dl>
+          <p class="checkout-status" id="checkout-status">Select a ticket above to load checkout.</p>
+        </article>
+
+        <article class="checkout-form-card">
+          <form id="checkout-form" novalidate>
+            <div class="checkout-form-grid">
+              <div>
+                <label for="checkout-name">Attendee name</label>
+                <input id="checkout-name" type="text" placeholder="Full name" required>
+              </div>
+              <div>
+                <label for="checkout-email">Email address</label>
+                <input id="checkout-email" type="email" placeholder="you@example.com" required>
+              </div>
+              <div>
+                <label for="checkout-phone">Phone number</label>
+                <input id="checkout-phone" type="tel" placeholder="+1 555 123 4567" required>
+              </div>
+              <div>
+                <label for="checkout-quantity">Tickets</label>
+                <select id="checkout-quantity">
+                  <option value="1">1 ticket</option>
+                  <option value="2">2 tickets</option>
+                  <option value="3">3 tickets</option>
+                  <option value="4">4 tickets</option>
+                  <option value="5">5 tickets</option>
+                </select>
+              </div>
+              <div class="checkout-wide">
+                <label for="checkout-notes">Special requests</label>
+                <textarea id="checkout-notes" rows="4" placeholder="Accessibility, seating, or invoice notes"></textarea>
+              </div>
+            </div>
+
+            <div class="checkout-actions">
+              <a class="btn secondary checkout-login-link" id="checkout-login-link" href="account.html">Login / Create Account</a>
+              <button type="submit" id="checkout-submit">Checkout</button>
+            </div>
+            <p class="form-message" id="checkout-message" aria-live="polite"></p>
+          </form>
+        </article>
       </div>
     </section>
 

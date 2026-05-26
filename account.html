@@ -46,13 +46,29 @@
       </div>
     </section>
 
-    <section class="account-panel" aria-label="Account forms">
+    <section class="account-panel" id="account-panel" aria-label="Account forms">
+      <div class="checkout-prompt" id="checkout-prompt" hidden>
+        <p class="eyebrow">Checkout Access</p>
+        <h2 id="checkout-prompt-title">Login or create an account to continue</h2>
+        <p id="checkout-prompt-copy">Your ticket selection will be ready after you sign in or create your account.</p>
+      </div>
+      <article class="auth-card account-summary" id="account-summary" hidden>
+        <div class="auth-heading">
+          <p class="eyebrow">Your Account</p>
+          <h2 id="account-summary-title">Welcome back</h2>
+        </div>
+        <p id="account-summary-copy">You are signed in and ready to manage your bookings.</p>
+        <div class="account-actions">
+          <a class="btn primary" id="account-primary-action" href="index.html#tickets">Browse Tickets</a>
+          <button type="button" id="logout-button">Logout</button>
+        </div>
+      </article>
       <article class="auth-card">
         <div class="auth-heading">
           <p class="eyebrow">Welcome Back</p>
           <h2>Login</h2>
         </div>
-        <form>
+        <form id="login-form">
           <label for="login-email">Email address</label>
           <input id="login-email" type="email" placeholder="you@example.com" required>
 
@@ -61,13 +77,14 @@
 
           <div class="form-row">
             <label class="check-option">
-              <input type="checkbox">
+              <input id="remember-login" type="checkbox">
               Remember me
             </label>
-            <a href="#">Forgot password?</a>
+            <a id="forgot-password-link" href="#">Forgot password?</a>
           </div>
 
           <button type="submit">Login</button>
+          <p class="form-message" id="login-message" aria-live="polite"></p>
         </form>
       </article>
 
@@ -76,7 +93,7 @@
           <p class="eyebrow">New Here</p>
           <h2>Create Account</h2>
         </div>
-        <form>
+        <form id="signup-form">
           <label for="signup-name">Full name</label>
           <input id="signup-name" type="text" placeholder="Your full name" required>
 
@@ -92,6 +109,7 @@
           </label>
 
           <button type="submit">Create Account</button>
+          <p class="form-message" id="signup-message" aria-live="polite"></p>
         </form>
       </article>
     </section>
