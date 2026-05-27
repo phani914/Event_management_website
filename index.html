@@ -33,6 +33,7 @@
         <li><a href="#countdown">Countdown</a></li>
         <li><a href="#tickets">Tickets</a></li>
         <li><a href="#gallery">Gallery</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
         <li><a href="#speakers">Speakers</a></li>
         <li><a class="account-link" href="account.html">Login / Create Account</a></li>
       </ul>
@@ -208,79 +209,6 @@
       </div>
     </section>
 
-    <section id="checkout" class="section checkout-section" aria-labelledby="checkout-title">
-      <div class="section-heading">
-        <p class="eyebrow">Checkout</p>
-        <h2 id="checkout-title">Complete your booking</h2>
-        <p class="section-copy">Review your selected pass, add attendee details, and confirm your ticket request.</p>
-      </div>
-
-      <div class="checkout-layout">
-        <article class="checkout-summary">
-          <p class="eyebrow">Selected Pass</p>
-          <h3 id="checkout-plan">Choose a ticket to begin</h3>
-          <dl class="checkout-totals">
-            <div>
-              <dt>Ticket price</dt>
-              <dd id="checkout-price">$0</dd>
-            </div>
-            <div>
-              <dt>Quantity</dt>
-              <dd id="checkout-quantity-label">1</dd>
-            </div>
-            <div>
-              <dt>Service fee</dt>
-              <dd id="checkout-fee">$0</dd>
-            </div>
-            <div class="checkout-total-row">
-              <dt>Total</dt>
-              <dd id="checkout-total">$0</dd>
-            </div>
-          </dl>
-          <p class="checkout-status" id="checkout-status">Select a ticket above to load checkout.</p>
-        </article>
-
-        <article class="checkout-form-card">
-          <form id="checkout-form" novalidate>
-            <div class="checkout-form-grid">
-              <div>
-                <label for="checkout-name">Attendee name</label>
-                <input id="checkout-name" type="text" placeholder="Full name" required>
-              </div>
-              <div>
-                <label for="checkout-email">Email address</label>
-                <input id="checkout-email" type="email" placeholder="you@example.com" required>
-              </div>
-              <div>
-                <label for="checkout-phone">Phone number</label>
-                <input id="checkout-phone" type="tel" placeholder="+1 555 123 4567" required>
-              </div>
-              <div>
-                <label for="checkout-quantity">Tickets</label>
-                <select id="checkout-quantity">
-                  <option value="1">1 ticket</option>
-                  <option value="2">2 tickets</option>
-                  <option value="3">3 tickets</option>
-                  <option value="4">4 tickets</option>
-                  <option value="5">5 tickets</option>
-                </select>
-              </div>
-              <div class="checkout-wide">
-                <label for="checkout-notes">Special requests</label>
-                <textarea id="checkout-notes" rows="4" placeholder="Accessibility, seating, or invoice notes"></textarea>
-              </div>
-            </div>
-
-            <div class="checkout-actions">
-              <a class="btn secondary checkout-login-link" id="checkout-login-link" href="account.html">Login / Create Account</a>
-              <button type="submit" id="checkout-submit">Checkout</button>
-            </div>
-            <p class="form-message" id="checkout-message" aria-live="polite"></p>
-          </form>
-        </article>
-      </div>
-    </section>
-
     <section id="gallery" class="section gallery-section">
       <div class="section-heading gallery-heading">
         <div>
@@ -295,6 +223,8 @@
           <figcaption>
             <span>Main Stage</span>
             <strong>Keynote sessions</strong>
+            <p>Opening remarks, founder panels, and product strategy talks in Hall A.</p>
+            <small>Jun 12 &middot; 10:00 AM &middot; All passes</small>
           </figcaption>
         </figure>
         <figure class="gallery-item">
@@ -302,6 +232,8 @@
           <figcaption>
             <span>Workshop Lab</span>
             <strong>Hands-on learning</strong>
+            <p>Small-group product, design, and AI workflow sessions with mentors.</p>
+            <small>Jun 13 &middot; Studio B &middot; Pro/VIP</small>
           </figcaption>
         </figure>
         <figure class="gallery-item gallery-tall">
@@ -309,6 +241,8 @@
           <figcaption>
             <span>Innovation Stage</span>
             <strong>Live demos</strong>
+            <p>Startup showcases, product launches, and technical walkthroughs.</p>
+            <small>Jun 13 &middot; 3:30 PM &middot; All passes</small>
           </figcaption>
         </figure>
         <figure class="gallery-item">
@@ -316,6 +250,8 @@
           <figcaption>
             <span>Networking</span>
             <strong>New connections</strong>
+            <p>Hosted meetups for founders, engineers, designers, and partners.</p>
+            <small>Daily &middot; Lounge C &middot; Pro/VIP</small>
           </figcaption>
         </figure>
         <figure class="gallery-item gallery-wide">
@@ -323,6 +259,8 @@
           <figcaption>
             <span>Expo Hall</span>
             <strong>Community energy</strong>
+            <p>Partner booths, demo pods, hiring tables, and community showcases.</p>
+            <small>Jun 12-14 &middot; Expo Level &middot; All passes</small>
           </figcaption>
         </figure>
         <figure class="gallery-item">
@@ -330,6 +268,8 @@
           <figcaption>
             <span>Reception</span>
             <strong>Evening social</strong>
+            <p>Music, refreshments, and relaxed conversations after the sessions.</p>
+            <small>Jun 13 &middot; 7:00 PM &middot; VIP</small>
           </figcaption>
         </figure>
         <figure class="gallery-item">
@@ -337,8 +277,27 @@
           <figcaption>
             <span>Finale</span>
             <strong>Closing moments</strong>
+            <p>Awards, final keynote, community recap, and next-year preview.</p>
+            <small>Jun 14 &middot; Main Hall &middot; All passes</small>
           </figcaption>
         </figure>
+      </div>
+      <div class="gallery-details" aria-label="Gallery details">
+        <article>
+          <span>Venue Access</span>
+          <strong>Three active zones</strong>
+          <p>Main Hall, Studio B, and the Expo Level stay open throughout the summit with badge-based entry.</p>
+        </article>
+        <article>
+          <span>Photo Coverage</span>
+          <strong>Updated daily</strong>
+          <p>Gallery highlights are organized by session type so attendees can quickly find the moments they care about.</p>
+        </article>
+        <article>
+          <span>Guest Support</span>
+          <strong>On-site help desk</strong>
+          <p>Questions about seating, accessibility, session rooms, or ticket access can be handled at check-in.</p>
+        </article>
       </div>
     </section>
 
@@ -350,23 +309,75 @@
       <div class="speaker-grid">
         <article class="speaker-card">
           <div class="speaker-photo speaker-one"></div>
-          <h3>Maya Chen</h3>
-          <p>AI Product Lead</p>
+          <div class="speaker-content">
+            <span class="speaker-role">AI Product Lead</span>
+            <h3>Maya Chen</h3>
+            <p>Maya leads applied AI product teams and helps companies move from experiments to reliable customer-facing workflows.</p>
+            <dl class="speaker-details">
+              <div>
+                <dt>Session</dt>
+                <dd>AI Product Strategy</dd>
+              </div>
+              <div>
+                <dt>Time</dt>
+                <dd>Jun 12, 10:00 AM</dd>
+              </div>
+            </dl>
+          </div>
         </article>
         <article class="speaker-card">
           <div class="speaker-photo speaker-two"></div>
-          <h3>Arjun Mehta</h3>
-          <p>Founder, ScaleWorks</p>
+          <div class="speaker-content">
+            <span class="speaker-role">Founder, ScaleWorks</span>
+            <h3>Arjun Mehta</h3>
+            <p>Arjun works with early-stage founders on growth systems, fundraising stories, and operational discipline for scaling teams.</p>
+            <dl class="speaker-details">
+              <div>
+                <dt>Session</dt>
+                <dd>Startup Pitch Night</dd>
+              </div>
+              <div>
+                <dt>Time</dt>
+                <dd>Jun 14, 6:00 PM</dd>
+              </div>
+            </dl>
+          </div>
         </article>
         <article class="speaker-card">
           <div class="speaker-photo speaker-three"></div>
-          <h3>Sofia Rivera</h3>
-          <p>Design Systems Director</p>
+          <div class="speaker-content">
+            <span class="speaker-role">Design Systems Director</span>
+            <h3>Sofia Rivera</h3>
+            <p>Sofia builds design systems for global product teams, with a focus on accessibility, governance, and fast delivery.</p>
+            <dl class="speaker-details">
+              <div>
+                <dt>Session</dt>
+                <dd>Design Systems Lab</dd>
+              </div>
+              <div>
+                <dt>Time</dt>
+                <dd>Jun 13, 1:30 PM</dd>
+              </div>
+            </dl>
+          </div>
         </article>
         <article class="speaker-card">
           <div class="speaker-photo speaker-four"></div>
-          <h3>Noah Brooks</h3>
-          <p>Cloud Architect</p>
+          <div class="speaker-content">
+            <span class="speaker-role">Cloud Architect</span>
+            <h3>Noah Brooks</h3>
+            <p>Noah advises engineering teams on secure cloud foundations, resilient infrastructure, and practical platform strategy.</p>
+            <dl class="speaker-details">
+              <div>
+                <dt>Session</dt>
+                <dd>Live Architecture Review</dd>
+              </div>
+              <div>
+                <dt>Time</dt>
+                <dd>Jun 13, 3:30 PM</dd>
+              </div>
+            </dl>
+          </div>
         </article>
       </div>
     </section>

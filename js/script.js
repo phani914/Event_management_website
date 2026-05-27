@@ -29,6 +29,9 @@ const checkoutStatus = document.getElementById("checkout-status");
 const checkoutSubmit = document.getElementById("checkout-submit");
 const checkoutMessage = document.getElementById("checkout-message");
 const checkoutLoginLink = document.getElementById("checkout-login-link");
+const checkoutConfirmation = document.getElementById("checkout-confirmation");
+const confirmationTitle = document.getElementById("confirmation-title");
+const confirmationCopy = document.getElementById("confirmation-copy");
 
 const USERS_KEY = "eventhub-users";
 const SESSION_KEY = "eventhub-current-user";
@@ -36,6 +39,11 @@ const TICKET_KEY = "eventhub-selected-ticket";
 const TICKET_PRICE_KEY = "eventhub-selected-ticket-price";
 const BOOKINGS_KEY = "eventhub-bookings";
 const REMEMBERED_EMAIL_KEY = "eventhub-remembered-email";
+const TICKET_PRICES = {
+  Starter: 49,
+  Professional: 129,
+  VIP: 249,
+};
 
 function getUsers() {
   try {
@@ -77,8 +85,14 @@ function setMessage(element, message, type = "success") {
 }
 
 function getSelectedTicketPrice() {
+  const params = new URLSearchParams(window.location.search);
+  const queryPrice = Number(params.get("price"));
   const savedPrice = Number(localStorage.getItem(TICKET_PRICE_KEY));
-  return Number.isFinite(savedPrice) ? savedPrice : 0;
+  const selectedTicket = getSelectedTicket();
+
+  if (Number.isFinite(queryPrice) && queryPrice > 0) return queryPrice;
+  if (Number.isFinite(savedPrice) && savedPrice > 0) return savedPrice;
+  return TICKET_PRICES[selectedTicket] || 0;
 }
 
 function getSelectedTicket() {
@@ -111,7 +125,10 @@ function updateCheckoutLoginLink() {
   if (!checkoutLoginLink) return;
 
   const selectedTicket = getSelectedTicket();
-  const ticketQuery = selectedTicket ? `?ticket=${encodeURIComponent(selectedTicket)}` : "";
+  const selectedPrice = getSelectedTicketPrice();
+  const ticketQuery = selectedTicket
+    ? `?ticket=${encodeURIComponent(selectedTicket)}&price=${encodeURIComponent(selectedPrice)}`
+    : "";
   checkoutLoginLink.href = `account.html${ticketQuery}#account-panel`;
 }
 
@@ -179,8 +196,13 @@ function updateAccountSummary() {
   }
 
   if (accountPrimaryAction) {
+    const selectedPrice = getSelectedTicketPrice();
+    const checkoutUrl = selectedTicket
+      ? `checkout.html?ticket=${encodeURIComponent(selectedTicket)}&price=${encodeURIComponent(selectedPrice)}`
+      : "index.html#tickets";
+
     accountPrimaryAction.textContent = selectedTicket ? "Continue Checkout" : "Browse Tickets";
-    accountPrimaryAction.href = selectedTicket ? "index.html#checkout" : "index.html#tickets";
+    accountPrimaryAction.href = checkoutUrl;
   }
 }
 
@@ -244,9 +266,7 @@ ticketButtons.forEach((button) => {
       localStorage.setItem(TICKET_PRICE_KEY, ticketPrice);
     }
 
-    updateCheckout();
-    setMessage(checkoutMessage, `${ticketPlan} pass selected. Review your checkout details.`);
-    checkoutSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.location.href = `checkout.html?ticket=${encodeURIComponent(ticketPlan)}&price=${encodeURIComponent(ticketPrice)}`;
   });
 });
 
@@ -254,6 +274,12 @@ const selectedTicket = getSelectedTicket();
 
 if (selectedTicket) {
   localStorage.setItem(TICKET_KEY, selectedTicket);
+}
+
+const selectedPrice = new URLSearchParams(window.location.search).get("price");
+
+if (selectedPrice) {
+  localStorage.setItem(TICKET_PRICE_KEY, selectedPrice);
 }
 
 if (selectedTicket && checkoutPrompt) {
@@ -402,7 +428,6 @@ if (checkoutForm) {
 
     if (!selectedTicket || !selectedPrice) {
       setMessage(checkoutMessage, "Please select a ticket before checkout.", "error");
-      document.getElementById("tickets")?.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
 
@@ -415,23 +440,56 @@ if (checkoutForm) {
     const attendeeName = document.getElementById("checkout-name").value.trim();
     const attendeeEmail = document.getElementById("checkout-email").value.trim().toLowerCase();
     const attendeePhone = document.getElementById("checkout-phone").value.trim();
+    const billingCity = document.getElementById("billing-city").value.trim();
+    const billingZip = document.getElementById("billing-zip").value.trim();
+    const paymentMethod = document.getElementById("payment-method").value;
+    const cardNumber = document.getElementById("card-number").value.replace(/\D/g, "");
+    const cardExpiry = document.getElementById("card-expiry").value.trim();
+    const cardCvv = document.getElementById("card-cvv").value.trim();
+    const checkoutTerms = document.getElementById("checkout-terms").checked;
+    const checkoutNotes = document.getElementById("checkout-notes").value.trim();
     const quantity = Number(checkoutQuantity?.value || 1);
     const subtotal = selectedPrice * quantity;
     const fee = Math.max(4, Math.round(subtotal * 0.06));
     const total = subtotal + fee;
 
-    if (!attendeeName || !attendeeEmail || !attendeePhone) {
-      setMessage(checkoutMessage, "Please fill in all attendee details.", "error");
+    if (!attendeeName || !attendeeEmail || !attendeePhone || !billingCity || !billingZip) {
+      setMessage(checkoutMessage, "Please fill in attendee and billing details.", "error");
       return;
     }
 
+    if (!attendeeEmail.includes("@") || !attendeeEmail.includes(".")) {
+      setMessage(checkoutMessage, "Please enter a valid attendee email address.", "error");
+      return;
+    }
+
+    if (paymentMethod === "Card" && (cardNumber.length < 12 || !/^\d{2}\/\d{2}$/.test(cardExpiry) || cardCvv.length < 3)) {
+      setMessage(checkoutMessage, "Please enter valid card details.", "error");
+      return;
+    }
+
+    if (!checkoutTerms) {
+      setMessage(checkoutMessage, "Please accept the checkout terms to confirm your booking.", "error");
+      return;
+    }
+
+    const bookingId = `EH-${Date.now().toString().slice(-6)}`;
+
     saveBooking({
+      id: bookingId,
       ticket: selectedTicket,
       quantity,
+      subtotal,
+      fee,
       total,
       attendeeName,
       attendeeEmail,
       attendeePhone,
+      billingCity,
+      billingZip,
+      paymentMethod,
+      paymentLast4: cardNumber ? cardNumber.slice(-4) : "",
+      notes: checkoutNotes,
       accountEmail: currentUser.email,
       createdAt: new Date().toISOString(),
     });
@@ -439,8 +497,20 @@ if (checkoutForm) {
     checkoutForm.reset();
     localStorage.removeItem(TICKET_KEY);
     localStorage.removeItem(TICKET_PRICE_KEY);
+
+    if (window.history.replaceState) {
+      window.history.replaceState({}, document.title, "checkout.html");
+    }
+
     updateCheckout();
-    setMessage(checkoutMessage, `Checkout confirmed for ${quantity} ${selectedTicket} ticket${quantity > 1 ? "s" : ""}.`);
+    setMessage(checkoutMessage, `Checkout confirmed. Booking ID: ${bookingId}.`);
+
+    if (checkoutConfirmation && confirmationTitle && confirmationCopy) {
+      checkoutConfirmation.hidden = false;
+      confirmationTitle.textContent = `Booking ${bookingId} confirmed`;
+      confirmationCopy.textContent = `${quantity} ${selectedTicket} ticket${quantity > 1 ? "s" : ""} confirmed for ${attendeeName}. Total paid: ${formatCurrency(total)}.`;
+      checkoutConfirmation.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
 }
 
